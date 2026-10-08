@@ -1,0 +1,26 @@
+seed: 0
+total_steps: 2000000
+n_envs: 8
+rollout_steps: 256
+
+gamma: 0.995          # ~17 min horizon at 5 s steps, longer than the thermal time constant
+gae_lambda: 0.95
+epochs: 10
+minibatch: 256
+clip: 0.2
+lr: 0.0003
+vf_coef: 0.5
+ent_coef: 0.0
+max_grad_norm: 0.5
+target_kl: 0.02
+hidden: 64
+init_log_std: -0.5
+
+action: setpoint      # setpoint: agent sets per-zone PID targets | speeds: agent sets fan speeds directly
+setpoint_range: [70.0, 82.0]
+
+mode: lag             # lag | penalty | plain
+cost_limit: 0.0002    # mean degrees over T_max per step, about 0.3 degree-steps an hour
+lambda_lr: 5.0        # per-step costs are tiny, so lambda needs a big step to move at all
+lambda_init: 0.0
+penalty: 1.0          # fixed lambda when mode is penalty

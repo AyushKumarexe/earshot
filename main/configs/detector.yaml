@@ -1,0 +1,39 @@
+seed: 0
+cache_dir: data/cache
+calibration_windows: 10
+
+data:
+  layout: dcase              # dcase | mimii | own
+  root: data/dev_data/fan    # DCASE 2020 Task 2 dev set
+  mimii_root: data/mimii     # contains 6_dB_fan/, 0_dB_fan/, -6_dB_fan/
+  snr: 6
+  own_root: recordings       # recordings/<condition>/*.wav from scripts/record.py
+  normal_conditions: [idle, load]
+  val_fraction: 0.1
+
+features:
+  sr: 16000
+  n_mels: 128
+  n_fft: 1024
+  hop: 512
+  window_s: 1.0
+
+models:
+  gmm:
+    n_components: 16
+    n_mfcc: 20
+  ae:
+    context: 5
+    epochs: 100
+    batch_size: 512
+    lr: 0.001
+    samples_per_clip: 64
+  conv:
+    patch: 32
+    epochs: 60
+    batch_size: 128
+    lr: 0.001
+    samples_per_clip: 8
+  knn:
+    embedding: stats         # stats | panns (pip install panns-inference)
+    k: 5

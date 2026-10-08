@@ -1,0 +1,32 @@
+[project]
+name = "earshot"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy",
+    "scipy",
+    "pandas",
+    "pyyaml",
+    "torch",
+    "gymnasium",
+    "librosa",
+    "soundfile",
+    "sounddevice",
+    "scikit-learn",
+    "joblib",
+    "onnx",
+    "onnxscript",
+    "onnxruntime",
+    "matplotlib",
+    "streamlit",
+]
+
+[project.optional-dependencies]
+panns = ["panns-inference"]
+dev = ["pytest"]
+
+[tool.setuptools.packages.find]
+include = ["earshot*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

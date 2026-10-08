@@ -1,0 +1,17 @@
+numpy
+scipy
+pandas
+pyyaml
+torch
+gymnasium
+librosa
+soundfile
+sounddevice
+scikit-learn
+joblib
+onnx
+onnxscript
+onnxruntime
+matplotlib
+streamlit
+pytest
